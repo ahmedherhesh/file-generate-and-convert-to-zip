@@ -40,11 +40,11 @@ function to_zip($path)
         $zip->close();
     }
 }
-function theme_generate($theme_name, $files_and_files_details = [])
+function theme_generate($path_and_theme_name, $files_and_files_details = [])
 {
-    if (!file_exists($theme_name)) {
-        mkdir($theme_name);
+    if (!file_exists($path_and_theme_name)) {
+        mkdir($path_and_theme_name);
         write_in_files($files_and_files_details);
-        to_zip("themes/$theme_name");
+        to_zip($path_and_theme_name);
     }
 }

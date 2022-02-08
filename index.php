@@ -21,7 +21,7 @@ $files_and_files_details = [
     ],
 ];
 if($theme_name && $files_and_files_details){
-    theme_generate($theme_name, $files_and_files_details);
+    theme_generate("themes/$theme_name", $files_and_files_details);
 }
 
 // $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($theme_name), RecursiveIteratorIterator::SELF_FIRST); 
