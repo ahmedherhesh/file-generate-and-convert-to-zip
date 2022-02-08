@@ -45,6 +45,6 @@ function theme_generate($theme_name, $files_and_files_details = [])
     if (!file_exists($theme_name)) {
         mkdir($theme_name);
         write_in_files($files_and_files_details);
-        to_zip($theme_name);
+        to_zip("themes/$theme_name");
     }
 }

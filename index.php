@@ -1,25 +1,28 @@
 <?php
 require_once "core/init.php";
-$theme_name = "themes/theme_1";
+
+$theme_name = isset($_REQUEST['theme_name']) && !empty($_REQUEST['theme_name']) ? strip_tags(str_replace(' ','-',$_REQUEST['theme_name'])) : '';
 $files_and_files_details = [
     "functions.php" => [
-        "path"      => $theme_name,
+        "path"      => "themes/$theme_name",
         "content"   => "<?php echo 'functions';"
     ],
     "style.css"     => [
-        "path"      => $theme_name,
+        "path"      => "themes/$theme_name",
         "content"   => "h1{color:red;}"
     ],
     "main.css"     => [
-        "path"      => "$theme_name/assets",
+        "path"      => "themes/$theme_name/assets",
         "content"   => "h1{color:red;}"
     ],
     "main.js"       => [
-        "path"      => "$theme_name/assets",
+        "path"      => "themes/$theme_name/assets",
         "content"   => "jQuery(function($){})"
     ],
 ];
-theme_generate($theme_name, $files_and_files_details);
+if($theme_name && $files_and_files_details){
+    theme_generate($theme_name, $files_and_files_details);
+}
 
 // $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($theme_name), RecursiveIteratorIterator::SELF_FIRST); 
 // print_r($files);
